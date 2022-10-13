@@ -1,0 +1,38 @@
+M:
+    A:
+    B:
+#:import Label kivy.uix.label.Label
+<A>:
+    name: "first"
+    GridLayout:
+        rows:2
+        GridLayout:
+            cols: 9
+            rows: 9
+            on_parent:
+                for i in root.a: txt = "{}".format(i); self.add_widget(Label(text = txt, color=(1,1,1)))
+
+
+        Button:
+            text: 'Solve Sudoku'
+            on_press: app.root.current = "second"
+            on_press : root.next()
+            background_color: (1,0,0)
+
+<B>:
+    name: "second"
+    BoxLayout:
+        orientation: "vertical"
+        GridLayout:
+            cols: 9
+            rows: 9
+            on_parent:
+                for i in root.g: txt = "{}".format(i); self.add_widget(Label(text = txt, color=(1,1,1)))
+
+
+        Button:
+            text: "Solved"
+            on_press: app.root.current = "first"
+            background_color: (0,1,0)
+
+
